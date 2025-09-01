@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: "com.jfrog.bintray"
 
 // This is the library version used when deploying the artifact
 version = VERSION_NAME
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion as Integer
-    buildToolsVersion rootProject.ext.buildToolsVersion as String
+    namespace 'com.github.hiteshsondhi88.libffmpeg'
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion as Integer
@@ -31,9 +30,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    androidTestCompile 'com.squareup.assertj:assertj-android:1.0.0'
+    androidTestImplementation 'com.squareup.assertj:assertj-android:1.2.0'
 }
 
 group = GROUP
@@ -94,6 +93,9 @@ artifacts {
     archives sourcesJar
 }
 
+// Bintray plugin removed - Bintray has been shut down
+// Users should publish to Maven Central or other repositories instead
+/*
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
@@ -125,3 +127,4 @@ bintray {
         }
     }
 }
+*/
